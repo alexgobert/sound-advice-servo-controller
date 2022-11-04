@@ -5,11 +5,20 @@ def format():
     with open(filename, 'r') as file:
         newLines += '{\n'
         for line in file.readlines():
-            line = line.split(' ')
-            line = f'{{{line[0]}, \"{line[1].strip()}\"}},'
+            line = line.rstrip('\n').split(' ')
+            # newLine = f'{{{line.pop(0)}, std::vector<String> vect {{'
+            newLine = f'{{{line.pop(0)}, {{'
+            
+            for elem in line:
+                elem = elem.rstrip('\n')
+                newLine += f'"{elem}", '
 
-            newLines += line + '\n'
-        newLines += '}'
+            newLine = newLine.rstrip(', ')
+            newLine += '}},\n'
+
+            newLines += newLine
+
+        newLines += '};'
 
     newName = 'formatted_'+ filename
     with open(newName, 'w') as file:
