@@ -1,29 +1,34 @@
+#include <ArduinoSTL.h>
+#include <system_configuration.h>
+#include <unwind-cxx.h>
 #include <Servo.h>
 #include <map>
 
+const int numServos = 15;
+const int baudRate = 31250;
+
 // create servo object to control servos
-const int numServos = 1;
 Servo servos[numServos];
-int positions[numServos];
-int pins[numServos] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+int pins[numServos]; // TODO make constant
 
+// notes
+String notes[numServos]; // TODO make constant
+
+// TODO
 // note to Servo
-
-std::map<string, Servo> servo_dict = {
-    {}
+std::map<String, Servo> servo_dict = {
+    {"Hello", Servo()},
+    {"World", Servo()}
 };
 
 void setup() {
-    Serial.begin(31250);
+    Serial.begin(baudRate);
     
-    // attach Servos to pins
+    // attach Servos to pins and add Servo to dictionary
     for (int i = 0; i < numServos; i++) {
         servos[i].attach(pins[i]);
-    }
 
-    // create servo dict
-    for (int i = 0; i < numServos; i++) {
-
+        // TODO add Servo to dict
     }
 
     // read file
@@ -33,17 +38,17 @@ void loop() {
     int dummy = 0;
 }
 
-void playSong(int bpm, int numBeats, std::map<int, std::vector> beats) {
-    double beatDuration = 60 * 1.0 / bpm; // seconds
+void playSong(int bpm, int numBeats, std::map<int, std::vector<String>> beats) {
+    double beatDuration = 60.0 / bpm; // seconds
 
     for (int i = 0; i < numBeats; i++) {
-        notes = beats[i];
+        std::vector<String> beatNotes = beats[i];
 
-        for (int n = 0; n < notes.length; n++) {
-            writeNote(servo_dict[notes[n]]);
+        for (int n = 0; n < beatNotes.size(); n++) {
+            writeNote(servo_dict[beatNotes[n]]);
         }
 
-        delay(beatDuration * 1000) // delay in milliseconds
+        delay(beatDuration * 1000); // delay in milliseconds
     }
 }
 
