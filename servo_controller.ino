@@ -28,7 +28,7 @@ std::map<String, Servo> servoDict;
 // note to LED pin
 std::map<String, int> ledDict;
 
-// songs
+// Happy Birthday
 std::map<int, std::vector<String>> happyBdayBeats = {
     {5, {"G6"}},
     {6, {"G6"}},
@@ -59,8 +59,109 @@ std::map<int, std::vector<String>> happyBdayBeats = {
 int happyBdayBPM = 180;
 int happyBdayNumBeats = 54;
 
-std::map<int, std::vector<String>> tempBeats = {
+// Jingle Bells
+std::map<int, std::vector<String>> jingleBellBeats = {
     {1, {"G6"}},
+    {2, {"E7"}},
+    {3, {"D7"}},
+    {4, {"C7"}},
+    {5, {"G6"}},
+    {9, {"G6"}},
+    {10, {"E7"}},
+    {11, {"D7"}},
+    {12, {"C7"}},
+    {13, {"A6"}},
+    {17, {"A6"}},
+    {18, {"F7"}},
+    {19, {"E7"}},
+    {20, {"D7"}},
+    {21, {"B6"}},
+    {25, {"G7"}},
+    {26, {"G7"}},
+    {27, {"F7"}},
+    {28, {"D7"}},
+    {29, {"E7"}},
+    {33, {"G6"}},
+    {34, {"E7"}},
+    {35, {"D7"}},
+    {36, {"C7"}},
+    {37, {"G6"}},
+    {41, {"G6"}},
+    {42, {"E7"}},
+    {43, {"D7"}},
+    {44, {"C7"}},
+    {45, {"A6"}},
+    {49, {"A6"}},
+    {50, {"F7"}},
+    {51, {"E7"}},
+    {52, {"D7"}},
+    {53, {"G7"}},
+    {54, {"G7"}},
+    {55, {"G7"}},
+    {56, {"G7"}},
+    {57, {"A7"}},
+    {58, {"G7"}},
+    {59, {"F7"}},
+    {60, {"D7"}},
+    {61, {"C7"}},
+    {63, {"G7"}},
+    {65, {"E7"}},
+    {66, {"E7"}},
+    {67, {"E7"}},
+    {69, {"E7"}},
+    {70, {"E7"}},
+    {71, {"E7"}},
+    {73, {"E7"}},
+    {74, {"G7"}},
+    {75, {"C7"}},
+    {76, {"D7"}},
+    {77, {"E7"}},
+    {81, {"F7"}},
+    {82, {"F7"}},
+    {83, {"F7"}},
+    {84, {"F7"}},
+    {85, {"F7"}},
+    {86, {"E7"}},
+    {87, {"E7"}},
+    {88, {"E7"}},
+    {89, {"E7"}},
+    {90, {"D7"}},
+    {91, {"D7"}},
+    {92, {"E7"}},
+    {93, {"D7"}},
+    {95, {"G7"}},
+    {97, {"E7"}},
+    {98, {"E7"}},
+    {99, {"E7"}},
+    {101, {"E7"}},
+    {102, {"E7"}},
+    {103, {"E7"}},
+    {105, {"E7"}},
+    {106, {"G7"}},
+    {107, {"C7"}},
+    {108, {"D7"}},
+    {109, {"E7"}},
+    {113, {"F7"}},
+    {114, {"F7"}},
+    {115, {"F7"}},
+    {116, {"F7"}},
+    {117, {"F7"}},
+    {118, {"E7"}},
+    {119, {"E7"}},
+    {120, {"E7"}},
+    {121, {"G7"}},
+    {122, {"G7"}},
+    {123, {"F7"}},
+    {124, {"D7"}},
+    {125, {"C7"}},
+};
+int jingleBellsBPM = 160;
+int jingleBellsNumBeats = 128;
+
+
+
+std::map<int, std::vector<String>> tempBeats = {
+    {1, {"G6", "G7"}},
     {2, {"G6"}},
     {3, {"G7"}},
 };
@@ -105,6 +206,15 @@ void loop() {
             bpm = happyBdayBPM;
             numBeats = happyBdayNumBeats;
             beats = happyBdayBeats;
+
+        case 2: // Jingle Bells
+            bpm = jingleBellsBPM;
+            numBeats = jingleBellBeats;
+            beats = jingleBellBeats;
+
+        case 4: // temporary
+            bpm = happyBdayBPM;
+            numBeats = 
 
         default: // Invalid selection
             Serial.println("Please make a valid selection");
