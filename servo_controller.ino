@@ -209,12 +209,13 @@ void loop() {
 
         case 2: // Jingle Bells
             bpm = jingleBellsBPM;
-            numBeats = jingleBellBeats;
+            numBeats = jingleBellsNumBeats;
             beats = jingleBellBeats;
 
         case 4: // temporary
             bpm = happyBdayBPM;
-            numBeats = 
+            numBeats = happyBdayNumBeats;
+            beats = tempBeats;
 
         default: // Invalid selection
             Serial.println("Please make a valid selection");
