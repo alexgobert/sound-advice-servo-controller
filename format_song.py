@@ -7,12 +7,13 @@ def format():
     with open(filename, 'r') as file:
         # newLines += format_map(file.readlines(), newLines)
         newLines += format_array(file.readlines(), newLines)
+        # newLines += format_progmem_array(file.readlines(), newLines)
 
     newName = 'formatted_'+ filename
     with open(newName, 'w') as file:
         file.write(newLines)
 
-def format_array(file_list: List[str], newLines: str):
+def format_progmem_array(file_list: List[str], newLines: str):
     for idx, line in enumerate(file_list):
         line = line.rstrip('\n').split(' ')
         line.pop(0)
@@ -31,7 +32,26 @@ def format_array(file_list: List[str], newLines: str):
     newLines += ';'
     return newLines
 
-def format_map(file_list: list, newLines: str):
+def format_array(file_list: List[str], newLines: str):
+    newLines += '{\n'
+    for line in file_list:
+        line = line.rstrip('\n').split(' ')
+        line.pop(0)
+
+        newLine = f'{{'
+        for elem in line:
+            elem = elem.rstrip('\n')
+            newLine += f'"{elem}", '
+
+        newLine = newLine.rstrip(', ')
+        newLine += '},\n'
+
+        newLines += newLine
+
+    newLines += '};'
+    return newLines
+
+def format_map(file_list: List[str], newLines: str):
     newLines += '{\n'
     for line in file_list:
         line = line.rstrip('\n').split(' ')
