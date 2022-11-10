@@ -3,6 +3,7 @@
 #include <unwind-cxx.h>
 #include <Servo.h>
 #include <map>
+#include <StackArray.h>
 
 const int numServos = 15;
 int baudRate = 19200;
@@ -231,43 +232,35 @@ void loop() {
     
     int input = Serial.parseInt();
     
-    int bpm;
-    int numBeats;
-    std::map<int, std::vector<String>> beats;
-
     // set song data based on user input
     switch (input) {
-        case 1: // Happy Birthday
-            bpm = happyBdayBPM;
-            numBeats = happyBdayNumBeats;
-            beats = happyBdayBeats;
+        // case 1: // Happy Birthday
+        //     bpm = happyBdayBPM;
+        //     numBeats = happyBdayNumBeats;
+        //     beats = happyBdayBeats;
 
-        // case 2: // Jingle Bells
-        //     bpm = jingleBellsBPM;
-        //     numBeats = jingleBellsNumBeats;
-        //     beats = jingleBellBeats;
+        case 2: // Jingle Bells
+            playSong(jingleBellsBPM, jingleBellsNumBeats, jingleBellBeats);
 
-        case 4: // temporary
-            bpm = tempBPM;
-            numBeats = tempNumBeats;
-            beats = tempBeats;
+        // case 4: // temporary
+        //     bpm = tempBPM;
+        //     numBeats = tempNumBeats;
+        //     beats = tempBeats;
 
         default: // Invalid selection
             Serial.println("Please make a valid selection");
-    }
-
-    playSong(bpm, numBeats, beats);
+    }    
 
     delay(1000);
 }
 
 void showOptions() {
-    Serial.println("Please pick a song from the following list of songs: ");
+    Serial.println(F("Please pick a song from the following list of songs: "));
     Serial.println();
-    Serial.println("\t1) Happy Birthday");
-    Serial.println("\t2) Song 2");
-    Serial.println("\t3) Song 3");
-    Serial.println("\t4) Temp Song");
+    Serial.println(F("\t1) Happy Birthday"));
+    Serial.println(F("\t2) Song 2"));
+    Serial.println(F("\t3) Song 3"));
+    Serial.println(F("\t4) Temp Song"));
     Serial.println();
 }
 
@@ -275,7 +268,7 @@ void showOptions() {
 // @param bpm is the beats per minute of song
 // @param numBeats is the number of beats in song
 // @param beats is (int -> vector<String>) map that contains the notes for every beat
-void playSong(int bpm, int numBeats, std::map<int, std::vector<String>> beats) {
+void playSong(int bpm, int numBeats, std::vector<String> *beats) {
     double beatDuration = 60.0 / bpm; // seconds
 
     for (int i = 1; i <= numBeats; i++) {
@@ -283,7 +276,8 @@ void playSong(int bpm, int numBeats, std::map<int, std::vector<String>> beats) {
 
         int beatDelay = beatDuration * 1000;
         
-        if (beats.count(i)) {
+        // if (beats.count(i)) {
+        if (beats[i].empty()) {
 
             writeNotes(beats[i]);
 

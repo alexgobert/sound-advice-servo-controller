@@ -13,22 +13,22 @@ def format():
         file.write(newLines)
 
 def format_array(file_list: List[str], newLines: str):
-    newLines += '{\n'
-    for line in file_list:
+    for idx, line in enumerate(file_list):
         line = line.rstrip('\n').split(' ')
         line.pop(0)
         
-        newLine = f'{{'
-        for elem in line:
+        for note_idx, elem in enumerate(line):
+            newLine = f'const String jingleBellBeat{idx}_{note_idx}[] = {{'
+            
             elem = elem.rstrip('\n')
             newLine += f'"{elem}", '
 
-        newLine = newLine.rstrip(', ')
-        newLine += '},\n'
+            newLine = newLine.rstrip(', ')
+            newLine += '};\n'
 
-        newLines += newLine
+            newLines += newLine
     
-    newLines += '};'
+    newLines += ';'
     return newLines
 
 def format_map(file_list: list, newLines: str):
