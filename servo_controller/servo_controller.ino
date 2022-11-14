@@ -3,7 +3,6 @@
 #include <unwind-cxx.h>
 #include <Servo.h>
 #include <map>
-#include <StackArray.h>
 
 const int numServos = 15;
 
@@ -32,8 +31,8 @@ std::map<const char*, int> ledDict;
 
 // Happy Birthday
 const int happyBdayBPM = 180;
-const int happyBdayNumBeats = 49;
-std::vector<const char*> happyBdayBeats[happyBdayNumBeats] = {
+// const int happyBdayNumBeats = 49;
+std::vector<const char*> happyBdayBeats[] = {
     {},
     {},
     {},
@@ -87,8 +86,7 @@ std::vector<const char*> happyBdayBeats[happyBdayNumBeats] = {
 
 // Jingle Bells
 const int jingleBellsBPM = 160;
-const int jingleBellsNumBeats = 125;
-std::vector<const char*> jingleBellBeats[jingleBellsNumBeats] = {
+std::vector<const char*> jingleBellBeats[] = {
     {"G6"},
     {"E7"},
     {"D7"},
@@ -216,16 +214,53 @@ std::vector<const char*> jingleBellBeats[jingleBellsNumBeats] = {
     {"C7"},
 };
 
-// std::vector<string> jingleBellBeats[] = {{"G7"}};
-
-const int tempBPM = 180;
-const int tempNumBeats = 5;
-std::vector<const char*> tempBeats[tempNumBeats] = {
-    {"G6", "G7"},
-    {"G6"},
+// Song 3 (jingle bells placeholder to test memory limitations)
+const int song3BPM = 160;
+std::vector<const char*> song3Beats[] = {
+    {"E7"},
+    {"D7"},
+    {"G7"},
+    {"G7"},
+    {"G7"},
+    {"G7"},
+    {"A7"},
+    {"G7"},
+    {"F7"},
+    {"D7"},
+    {"C7"},
+    {},
     {"G7"},
     {},
-    {"G7"}
+    {"E7"},
+    {"E7"},
+    {"E7"},
+    {},
+    {"E7"},
+    {"E7"},
+    {"E7"},
+    {},
+    {"E7"},
+    {"G7"},
+    {"G7"},
+    {"C7"},
+    {"D7"},
+    {"E7"},
+    {},
+    {},
+    {},
+    {"F7"},
+    {"F7"},
+    {"F7"},
+    {"F7"},
+    {"F7"},
+    {"E7"},
+    {"E7"},
+    {"E7"},
+    {"G7"},
+    {"G7"},
+    {"F7"},
+    {"D7"},
+    {"C7"},
 };
 
 // Arduino setup function
@@ -233,17 +268,13 @@ void setup() {
     Serial.begin(19200);
     
     for (int i = 0; i < numServos; i++) {
-        Servo curServo = servos[i];
-        int curLED = ledPins[i];
-        const char* curNote = notes[i];
-        
-        curServo.attach(servoPins[i]);
+        servos[i].attach(servoPins[i]);
 
-        servoDict[curNote] = curServo;
-        ledDict[curNote] = curLED;
+        servoDict[notes[i]] = servos[i];
+        ledDict[notes[i]] = ledPins[i];
 
         // define LED pins
-        pinMode(curLED, OUTPUT);
+        pinMode(ledPins[i], OUTPUT);
     }
 
 }
@@ -258,22 +289,18 @@ void loop() {
         delay(1000);
     } 
     
-    int input = Serial.parseInt();
-    Serial.println(input);
-    
     // set song data based on user input
-    switch (input) {
+    switch (Serial.parseInt()) {
         case 0:
             break;
         case 1: // Happy Birthday
-            playSong(happyBdayBPM, happyBdayNumBeats, happyBdayBeats);
+            playSong(happyBdayBPM, *(&happyBdayBeats + 1) - happyBdayBeats, happyBdayBeats);
             break;
         case 2: // Jingle Bells
-            playSong(jingleBellsBPM, jingleBellsNumBeats, jingleBellBeats);
+            playSong(jingleBellsBPM, *(&jingleBellBeats + 1) - jingleBellBeats ,jingleBellBeats);
             break;
-        case 4: // temporary
-            playSong(tempBPM, tempNumBeats, tempBeats);
-            break;
+        case 3: // Song 3
+            playSong(song3BPM, *(&song3Beats+ 1) - song3Beats, song3Beats);
         default: // Invalid selection
             Serial.println(F("Please make a valid selection"));
     }    
@@ -303,8 +330,7 @@ void playSong(int bpm, int numBeats, std::vector<const char*> *beats) {
 
         int beatDelay = beatDuration * 1000;
         
-        // if (beats.count(i)) {
-        if (beats[i].empty()) {
+        if (!beats[i].empty()) {
 
             writeNotes(beats[i]);
 
@@ -313,17 +339,21 @@ void playSong(int bpm, int numBeats, std::vector<const char*> *beats) {
 
         delay(beatDelay); // delay in milliseconds
 
-        Serial.print("Beat: " + String(i) + "\t\t");
-        Serial.println("Time Passed [s]: " + String(millis()-start));
+        Serial.print(F("Beat: "));
+        Serial.print(i);
+        Serial.print(F("\t\t"));
+
+        Serial.print(F("Time Passed [s]: "));
+        Serial.println(millis() - start);
     }
 }
 
 // plays a note
 // @param notes is a vector of strings that represent the notes to play
 void writeNotes(std::vector<const char*>& notes) {
-    moveServosAtNotes(notes, 0);
+    moveServosAtNotes(notes, angle1);
     delay(servoDelay);
-    moveServosAtNotes(notes, 35);
+    moveServosAtNotes(notes, angle2);
 }
 
 // actuates servos at a note to a given angle
@@ -331,12 +361,12 @@ void writeNotes(std::vector<const char*>& notes) {
 // @param angle is an int that represents a target angle for servos
 void moveServosAtNotes(std::vector<const char*>& notes, int angle) {
     for (const char* note: notes) {
-        Servo servo = servoDict[note];
-        int ledPin = ledDict[note];
-        uint8_t curState = digitalRead(ledPin);
+        uint8_t curState = digitalRead(ledDict[note]);
 
-        servo.write(angle);
-        digitalWrite(ledPin, ledStates[curState]);
+        servoDict[note].write(angle);
+        digitalWrite(ledDict[note], ledStates[curState]);
     }
-    Serial.print("Angle: " + String(angle) + "\t\t");
+    Serial.print(F("Angle: "));
+    Serial.print(angle);
+    Serial.print(F("\t\t"));
 }
