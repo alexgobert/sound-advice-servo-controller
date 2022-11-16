@@ -1,95 +1,95 @@
-{
-{1, {"G6"}},
-{2, {"E7"}},
-{3, {"D7"}},
-{4, {"C7"}},
-{5, {"G6"}},
-{9, {"G6"}},
-{10, {"E7"}},
-{11, {"D7"}},
-{12, {"C7"}},
-{13, {"A6"}},
-{17, {"A6"}},
-{18, {"F7"}},
-{19, {"E7"}},
-{20, {"D7"}},
-{21, {"B6"}},
-{25, {"G7"}},
-{26, {"G7"}},
-{27, {"F7"}},
-{28, {"D7"}},
-{29, {"E7"}},
-{33, {"G6"}},
-{34, {"E7"}},
-{35, {"D7"}},
-{36, {"C7"}},
-{37, {"G6"}},
-{41, {"G6"}},
-{42, {"E7"}},
-{43, {"D7"}},
-{44, {"C7"}},
-{45, {"A6"}},
-{49, {"A6"}},
-{50, {"F7"}},
-{51, {"E7"}},
-{52, {"D7"}},
-{53, {"G7"}},
-{54, {"G7"}},
-{55, {"G7"}},
-{56, {"G7"}},
-{57, {"A7"}},
-{58, {"G7"}},
-{59, {"F7"}},
-{60, {"D7"}},
-{61, {"C7"}},
-{63, {"G7"}},
-{65, {"E7"}},
-{66, {"E7"}},
-{67, {"E7"}},
-{69, {"E7"}},
-{70, {"E7"}},
-{71, {"E7"}},
-{73, {"E7"}},
-{74, {"G7"}},
-{75, {"C7"}},
-{76, {"D7"}},
-{77, {"E7"}},
-{81, {"F7"}},
-{82, {"F7"}},
-{83, {"F7"}},
-{84, {"F7"}},
-{85, {"F7"}},
-{86, {"E7"}},
-{87, {"E7"}},
-{88, {"E7"}},
-{89, {"E7"}},
-{90, {"D7"}},
-{91, {"D7"}},
-{92, {"E7"}},
-{93, {"D7"}},
-{95, {"G7"}},
-{97, {"E7"}},
-{98, {"E7"}},
-{99, {"E7"}},
-{101, {"E7"}},
-{102, {"E7"}},
-{103, {"E7"}},
-{105, {"E7"}},
-{106, {"G7"}},
-{107, {"C7"}},
-{108, {"D7"}},
-{109, {"E7"}},
-{113, {"F7"}},
-{114, {"F7"}},
-{115, {"F7"}},
-{116, {"F7"}},
-{117, {"F7"}},
-{118, {"E7"}},
-{119, {"E7"}},
-{120, {"E7"}},
-{121, {"G7"}},
-{122, {"G7"}},
-{123, {"F7"}},
-{124, {"D7"}},
-{125, {"C7"}},
-};
+const String jingleBellBeat0_0[] = {"G6"};
+const String jingleBellBeat1_0[] = {"E7"};
+const String jingleBellBeat2_0[] = {"D7"};
+const String jingleBellBeat3_0[] = {"C7"};
+const String jingleBellBeat4_0[] = {"G6"};
+const String jingleBellBeat8_0[] = {"G6"};
+const String jingleBellBeat9_0[] = {"E7"};
+const String jingleBellBeat10_0[] = {"D7"};
+const String jingleBellBeat11_0[] = {"C7"};
+const String jingleBellBeat12_0[] = {"A6"};
+const String jingleBellBeat16_0[] = {"A6"};
+const String jingleBellBeat17_0[] = {"F7"};
+const String jingleBellBeat18_0[] = {"E7"};
+const String jingleBellBeat19_0[] = {"D7"};
+const String jingleBellBeat20_0[] = {"B6"};
+const String jingleBellBeat24_0[] = {"G7"};
+const String jingleBellBeat25_0[] = {"G7"};
+const String jingleBellBeat26_0[] = {"F7"};
+const String jingleBellBeat27_0[] = {"D7"};
+const String jingleBellBeat28_0[] = {"E7"};
+const String jingleBellBeat32_0[] = {"G6"};
+const String jingleBellBeat33_0[] = {"E7"};
+const String jingleBellBeat34_0[] = {"D7"};
+const String jingleBellBeat35_0[] = {"C7"};
+const String jingleBellBeat36_0[] = {"G6"};
+const String jingleBellBeat40_0[] = {"G6"};
+const String jingleBellBeat41_0[] = {"E7"};
+const String jingleBellBeat42_0[] = {"D7"};
+const String jingleBellBeat43_0[] = {"C7"};
+const String jingleBellBeat44_0[] = {"A6"};
+const String jingleBellBeat48_0[] = {"A6"};
+const String jingleBellBeat49_0[] = {"F7"};
+const String jingleBellBeat50_0[] = {"E7"};
+const String jingleBellBeat51_0[] = {"D7"};
+const String jingleBellBeat52_0[] = {"G7"};
+const String jingleBellBeat53_0[] = {"G7"};
+const String jingleBellBeat54_0[] = {"G7"};
+const String jingleBellBeat55_0[] = {"G7"};
+const String jingleBellBeat56_0[] = {"A7"};
+const String jingleBellBeat57_0[] = {"G7"};
+const String jingleBellBeat58_0[] = {"F7"};
+const String jingleBellBeat59_0[] = {"D7"};
+const String jingleBellBeat60_0[] = {"C7"};
+const String jingleBellBeat62_0[] = {"G7"};
+const String jingleBellBeat64_0[] = {"E7"};
+const String jingleBellBeat65_0[] = {"E7"};
+const String jingleBellBeat66_0[] = {"E7"};
+const String jingleBellBeat68_0[] = {"E7"};
+const String jingleBellBeat69_0[] = {"E7"};
+const String jingleBellBeat70_0[] = {"E7"};
+const String jingleBellBeat72_0[] = {"E7"};
+const String jingleBellBeat73_0[] = {"G7"};
+const String jingleBellBeat74_0[] = {"C7"};
+const String jingleBellBeat75_0[] = {"D7"};
+const String jingleBellBeat76_0[] = {"E7"};
+const String jingleBellBeat80_0[] = {"F7"};
+const String jingleBellBeat81_0[] = {"F7"};
+const String jingleBellBeat82_0[] = {"F7"};
+const String jingleBellBeat83_0[] = {"F7"};
+const String jingleBellBeat84_0[] = {"F7"};
+const String jingleBellBeat85_0[] = {"E7"};
+const String jingleBellBeat86_0[] = {"E7"};
+const String jingleBellBeat86_1[] = {""};
+const String jingleBellBeat87_0[] = {"E7"};
+const String jingleBellBeat88_0[] = {"E7"};
+const String jingleBellBeat89_0[] = {"D7"};
+const String jingleBellBeat90_0[] = {"D7"};
+const String jingleBellBeat91_0[] = {"E7"};
+const String jingleBellBeat92_0[] = {"D7"};
+const String jingleBellBeat94_0[] = {"G7"};
+const String jingleBellBeat96_0[] = {"E7"};
+const String jingleBellBeat97_0[] = {"E7"};
+const String jingleBellBeat98_0[] = {"E7"};
+const String jingleBellBeat100_0[] = {"E7"};
+const String jingleBellBeat101_0[] = {"E7"};
+const String jingleBellBeat102_0[] = {"E7"};
+const String jingleBellBeat104_0[] = {"E7"};
+const String jingleBellBeat105_0[] = {"G7"};
+const String jingleBellBeat106_0[] = {"C7"};
+const String jingleBellBeat107_0[] = {"D7"};
+const String jingleBellBeat108_0[] = {"E7"};
+const String jingleBellBeat112_0[] = {"F7"};
+const String jingleBellBeat113_0[] = {"F7"};
+const String jingleBellBeat114_0[] = {"F7"};
+const String jingleBellBeat115_0[] = {"F7"};
+const String jingleBellBeat116_0[] = {"F7"};
+const String jingleBellBeat117_0[] = {"E7"};
+const String jingleBellBeat118_0[] = {"E7"};
+const String jingleBellBeat119_0[] = {"E7"};
+const String jingleBellBeat120_0[] = {"G7"};
+const String jingleBellBeat121_0[] = {"G7"};
+const String jingleBellBeat122_0[] = {"F7"};
+const String jingleBellBeat123_0[] = {"D7"};
+const String jingleBellBeat124_0[] = {"C7"};
+;
