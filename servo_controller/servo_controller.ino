@@ -21,7 +21,7 @@ const int angle1 = 0;
 const int angle2 = 35;
 
 // Notes on Glockenspiel as Strings, G5-G7
-const char* notes[numServos] = {"G5","A6", "B6", "C6", "D6", "E6", "F6", "G6", "A7", "B7", "C7", "D7", "E7", "F7", "G7"};
+const char* notes[numServos] = {"G5","A5", "B5", "C6", "D6", "E6", "F6", "G6", "A6", "B6", "C7", "D7", "E7", "F7", "G7"};
 
 // note to Servo
 std::map<const char*, Servo> servoDict;
