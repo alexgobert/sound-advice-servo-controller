@@ -16,9 +16,9 @@ std::map<uint8_t, uint8_t> ledStates = {
 
 // create servo object to control servos
 Servo servos[numServos];
-int servoDelay = 200;
-int angle1 = 0;
-int angle2 = 35;
+const int servoDelay = 200;
+const int angle1 = 0;
+const int angle2 = 35;
 
 // Notes on Glockenspiel as Strings, G5-G7
 const char* notes[numServos] = {"G5","A6", "B6", "C6", "D6", "E6", "F6", "G6", "A7", "B7", "C7", "D7", "E7", "F7", "G7"};
@@ -31,7 +31,6 @@ std::map<const char*, int> ledDict;
 
 // Happy Birthday
 const int happyBdayBPM = 180;
-// const int happyBdayNumBeats = 49;
 std::vector<const char*> happyBdayBeats[] = {
     {},
     {},
@@ -290,6 +289,7 @@ void loop() {
     } 
     
     // set song data based on user input
+    // NOTE: *(&arr + 1) - arr is address manipulation to get the size of arr in O(1) time
     switch (Serial.parseInt()) {
         case 0:
             break;
@@ -297,7 +297,7 @@ void loop() {
             playSong(happyBdayBPM, *(&happyBdayBeats + 1) - happyBdayBeats, happyBdayBeats);
             break;
         case 2: // Jingle Bells
-            playSong(jingleBellsBPM, *(&jingleBellBeats + 1) - jingleBellBeats ,jingleBellBeats);
+            playSong(jingleBellsBPM, *(&jingleBellBeats + 1) - jingleBellBeats, jingleBellBeats);
             break;
         case 3: // Song 3
             playSong(song3BPM, *(&song3Beats+ 1) - song3Beats, song3Beats);
@@ -323,12 +323,10 @@ void showOptions() {
 // @param numBeats is the number of beats in song
 // @param beats is (int -> vector<String>) map that contains the notes for every beat
 void playSong(int bpm, int numBeats, std::vector<const char*> *beats) {
-    double beatDuration = 60.0 / bpm; // seconds
-
     for (int i = 1; i <= numBeats; i++) {
         unsigned long start = millis();
 
-        int beatDelay = beatDuration * 1000;
+        int beatDelay = 60000.0 / bpm;
         
         if (!beats[i].empty()) {
 
