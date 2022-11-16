@@ -363,8 +363,9 @@ void moveServosAtNotes(std::vector<const char*>& notes, int angle) {
 
         servoDict[note].write(angle);
         digitalWrite(ledDict[note], ledStates[curState]);
+
+        Serial.print(F("Note: "));
+        Serial.print(String(note));
+        Serial.print(F("\t\t"));
     }
-    Serial.print(F("Angle: "));
-    Serial.print(angle);
-    Serial.print(F("\t\t"));
 }
