@@ -16,9 +16,9 @@ std::map<uint8_t, uint8_t> ledStates = {
 
 // create servo object to control servos
 Servo servos[numServos];
-const int servoDelay = 200;
-const int angle1 = 0;
-const int angle2 = 35;
+const int servoDelay = 40;
+const int angle1 = 15;
+const int angle2 = 50;
 
 // Notes on Glockenspiel as Strings, G5-G7
 const String notes[numServos] = {"G5","A6", "B6", "C6", "D6", "E6", "F6", "G6", "A7", "B7", "C7", "D7", "E7", "F7", "G7"};
@@ -39,6 +39,8 @@ void setup() {
         servoDict[notes[i]] = servos[i];
         ledDict[notes[i]] = ledPins[i];
 
+        servos[i].write(angle2);
+
         // define LED pins
         pinMode(ledPins[i], OUTPUT);
     }
@@ -51,15 +53,12 @@ void loop() {
 
     // empty loop to halt for user input
     while (Serial.available() == 0) {
-        delay(1000);
     } 
     
     // set song data based on user input
     String input = Serial.readStringUntil('\n').c_str();
 
     playSong(input);
-
-    delay(1000);
 }
 
 // Plays a song given data about it
