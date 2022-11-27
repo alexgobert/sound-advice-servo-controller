@@ -153,8 +153,8 @@ std::vector<const char*> jingleBellBeats[] = {
 };
 
 // Song 3 (jingle bells placeholder to test memory limitations)
-const int song3BPM = 160;
-std::vector<const char*> song3Beats[] = {
+const int payphoneBPM = 160;
+std::vector<const char*> payphoneBeats[] = {
 {"E6"},
 {"F6"},
 {"G6"},
@@ -221,6 +221,27 @@ std::vector<const char*> song3Beats[] = {
 {},
 };
 
+const int tempBPM = 60;
+std::vector<const char*> tempBeats[] = {
+{"C6", "F6"},
+{"C6", "F6"},
+{"C6", "F6"},
+{"C6", "F6"},
+{"B5", "D6"},
+{"B5", "D6"},
+{"B5", "D6"},
+{"B5", "D6"},
+{"C6", "E6"},
+{"C6", "E6"},
+{"C6", "E6"},
+{"C6", "E6"},
+{"C6", "E6"},
+{"C6", "E6"},
+{"C6", "E6"},
+{"C6", "E6"}
+};
+
+
 // Arduino setup function
 void setup() {
     Serial.begin(19200);
@@ -259,8 +280,10 @@ void loop() {
         case 2: // Jingle Bells
             playSong(jingleBellsBPM, *(&jingleBellBeats + 1) - jingleBellBeats, jingleBellBeats);
             break;
-        case 3: // Song 3
-            playSong(song3BPM, *(&song3Beats+ 1) - song3Beats, song3Beats);
+        case 3: // Payphone
+            playSong(payphoneBPM, *(&payphoneBeats+ 1) - payphoneBeats, payphoneBeats);
+        case 4: // Temp
+            playSong(tempBPM, *(&tempBeats+ 1) - tempBeats, tempBeats);
         default: // Invalid selection
             Serial.println(F("Please make a valid selection"));
     }    
@@ -272,8 +295,8 @@ void showOptions() {
     Serial.println(F("Please pick a song from the following list of songs: "));
     Serial.println();
     Serial.println(F("\t1) Happy Birthday"));
-    Serial.println(F("\t2) Song 2"));
-    Serial.println(F("\t3) Song 3"));
+    Serial.println(F("\t2) Jingle Bells"));
+    Serial.println(F("\t3) Payphone"));
     Serial.println(F("\t4) Temp Song"));
     Serial.println();
 }
