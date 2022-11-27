@@ -84,7 +84,7 @@ std::vector<const char*> happyBdayBeats[] = {
 };
 
 // Jingle Bells
-const int jingleBellsBPM = 160;
+const int jingleBellsBPM = 180;
 std::vector<const char*> jingleBellBeats[] = {
 {"E7"},
 {"E7"},
@@ -221,24 +221,37 @@ std::vector<const char*> payphoneBeats[] = {
 {},
 };
 
-const int tempBPM = 60;
+const int tempBPM = 150;
 std::vector<const char*> tempBeats[] = {
-{"C6", "F6"},
-{"C6", "F6"},
-{"C6", "F6"},
-{"C6", "F6"},
-{"B5", "D6"},
-{"B5", "D6"},
-{"B5", "D6"},
-{"B5", "D6"},
-{"C6", "E6"},
-{"C6", "E6"},
-{"C6", "E6"},
-{"C6", "E6"},
-{"C6", "E6"},
-{"C6", "E6"},
-{"C6", "E6"},
-{"C6", "E6"}
+{"E6"},
+{"G5"},
+{"C6"},
+{"E6"},
+{"F6"},
+{"A5"},
+{"D6"},
+{"F6"},
+{"G6"},
+{"B5"},
+{"E6"},
+{"G6"},
+{"A6"},
+{"C6"},
+{"F6"},
+{"A6"},
+{"B6"},
+{"D6"},
+{"G6"},
+{"B6"},
+{"C7"},
+{"F6"},
+{"A6"},
+{"C7"},
+{"D7"},
+{"G6"},
+{"B6"},
+{"D7"},
+{"C7"}
 };
 
 
