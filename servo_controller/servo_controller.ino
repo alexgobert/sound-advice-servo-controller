@@ -84,7 +84,7 @@ std::vector<const char*> happyBdayBeats[] = {
 };
 
 // Jingle Bells
-const int jingleBellsBPM = 180;
+const int jingleBellsBPM = 160;
 std::vector<const char*> jingleBellBeats[] = {
 {"E7"},
 {"E7"},
@@ -223,35 +223,21 @@ std::vector<const char*> payphoneBeats[] = {
 
 const int tempBPM = 150;
 std::vector<const char*> tempBeats[] = {
-{"E6"},
 {"G5"},
-{"C6"},
-{"E6"},
-{"F6"},
 {"A5"},
-{"D6"},
-{"F6"},
-{"G6"},
 {"B5"},
-{"E6"},
-{"G6"},
-{"A6"},
 {"C6"},
-{"F6"},
-{"A6"},
-{"B6"},
 {"D6"},
-{"G6"},
-{"B6"},
-{"C7"},
+{"E6"},
 {"F6"},
+{"G6"},
 {"A6"},
+{"B6"},
 {"C7"},
 {"D7"},
-{"G6"},
-{"B6"},
-{"D7"},
-{"C7"}
+{"E7"},
+{"F7"},
+{"G7"},
 };
 
 
@@ -294,9 +280,11 @@ void loop() {
             playSong(jingleBellsBPM, *(&jingleBellBeats + 1) - jingleBellBeats, jingleBellBeats);
             break;
         case 3: // Payphone
-            playSong(payphoneBPM, *(&payphoneBeats+ 1) - payphoneBeats, payphoneBeats);
+            playSong(payphoneBPM, *(&payphoneBeats + 1) - payphoneBeats, payphoneBeats);
+            break;
         case 4: // Temp
-            playSong(tempBPM, *(&tempBeats+ 1) - tempBeats, tempBeats);
+            playSong(tempBPM, *(&tempBeats + 1) - tempBeats, tempBeats);
+            break;
         default: // Invalid selection
             Serial.println(F("Please make a valid selection"));
     }    
