@@ -1,7 +1,7 @@
 from typing import List
 
 def format():
-    filename = input('Enter filename: ')
+    filename = 'raw_inputs/' + input('Enter filename: ')
 
     newLines = ''
     with open(filename, 'r') as file:
@@ -9,7 +9,7 @@ def format():
         newLines += format_array(file.readlines(), newLines)
         # newLines += format_progmem_array(file.readlines(), newLines)
 
-    newName = 'formatted_'+ filename
+    newName = 'formatted_inputs/formatted_'+ filename
     with open(newName, 'w') as file:
         file.write(newLines)
 
