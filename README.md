@@ -19,3 +19,13 @@ There are three hardcoded songs embedded in `servo_controller.ino`: Happy Birthd
 
 - ArduinoSTL  
 - Servo  
+
+## Potential Improvements  
+
+### 1. Use Python
+
+Rely on Python as a computational driver and use an Arduino sketch as a listener to Python via the [Serial](https://pypi.org/project/serial/) module. We ran into RAM overload issues by storing the songs as array literals, so offloading the space complexity of the songs to an external control terminal would've been helpful. Implementing Python would also allow for more complex, polished UI implementations, like a GUI. Use of a GUI would allow easy, intuitive usage for users with no prior programming experience.
+
+### 2. Use the [SD Arduino Library](https://www.arduino.cc/reference/en/libraries/sd/)  
+
+Another way of combatting the aforementioned memory limitations would be to store the songs in an SD card and use Arduino's SD library to read the songs on demand. This would cause the Arduino to store one song to RAM at a time, rather than all of them. This allows for an arbitrary number of playable songs, granted any single song does not exceed the Arduino's RAM limitations.  
