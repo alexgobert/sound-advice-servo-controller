@@ -16,12 +16,12 @@ std::map<uint8_t, uint8_t> ledStates = {
 
 // create servo object to control servos
 Servo servos[numServos];
-const int servoDelay = 40;
+const int servoDelay = 40; // milliseconds
 const int angle1 = 15;
 const int angle2 = 50;
 
 // Notes on Glockenspiel as Strings, G5-G7
-const char* notes[numServos] = {"G5","A5", "B5", "C6", "D6", "E6", "F6", "G6", "A6", "B6", "C7", "D7", "E7", "F7", "G7"};
+const char* notes[numServos] = {"G5", "A5", "B5", "C6", "D6", "E6", "F6", "G6", "A6", "B6", "C7", "D7", "E7", "F7", "G7"};
 
 // note to Servo
 std::map<const char*, Servo> servoDict;
@@ -152,8 +152,8 @@ std::vector<const char*> jingleBellBeats[] = {
     {},
 };
 
-// Song 3 (jingle bells placeholder to test memory limitations)
-const int payphoneBPM = 160;
+// Payphone
+const int payphoneBPM = 220;
 std::vector<const char*> payphoneBeats[] = {
     {"E6"},
     {"F6"},
@@ -221,8 +221,8 @@ std::vector<const char*> payphoneBeats[] = {
     {},
 };
 
-const int tempBPM = 150;
-std::vector<const char*> tempBeats[] = {
+const int scaleBPM = 150;
+std::vector<const char*> scaleBeats[] = {
     {"G5"},
     {"A5"},
     {"B5"},
@@ -283,8 +283,8 @@ void loop() {
         case 3: // Payphone
             playSong(payphoneBPM, *(&payphoneBeats + 1) - payphoneBeats, payphoneBeats);
             break;
-        case 4: // Temp
-            playSong(tempBPM, *(&tempBeats + 1) - tempBeats, tempBeats);
+        case 4: // Scale
+            playSong(scaleBPM, *(&scaleBeats + 1) - scaleBeats, scaleBeats);
             break;
         default: // Invalid selection
             Serial.println(F("Please make a valid selection"));
@@ -299,7 +299,7 @@ void showOptions() {
     Serial.println(F("\t1) Happy Birthday"));
     Serial.println(F("\t2) Jingle Bells"));
     Serial.println(F("\t3) Payphone"));
-    Serial.println(F("\t4) Temp Song"));
+    Serial.println(F("\t4) Scale"));
     Serial.println();
 }
 

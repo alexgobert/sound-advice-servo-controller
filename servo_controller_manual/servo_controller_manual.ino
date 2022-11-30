@@ -16,12 +16,12 @@ std::map<uint8_t, uint8_t> ledStates = {
 
 // create servo object to control servos
 Servo servos[numServos];
-const int servoDelay = 40;
+const int servoDelay = 40; // milliseconds
 const int angle1 = 15;
 const int angle2 = 50;
 
 // Notes on Glockenspiel as Strings, G5-G7
-const String notes[numServos] = {"G5","A5", "B5", "C6", "D6", "E6", "F6", "G6", "A6", "B6", "C7", "D7", "E7", "F7", "G7"};
+const String notes[numServos] = {"G5", "A5", "B5", "C6", "D6", "E6", "F6", "G6", "A6", "B6", "C7", "D7", "E7", "F7", "G7"};
 
 // note to Servo
 std::map<String, Servo> servoDict;
@@ -53,6 +53,7 @@ void loop() {
 
     // empty loop to halt for user input
     while (Serial.available() == 0) {
+        delay(1000);
     } 
     
     // set song data based on user input
@@ -76,7 +77,7 @@ void playSong(String note) {
 }
 
 // plays a note
-// @param notes is a vector of strings that represent the notes to play
+// @param note is a String containing the note to play
 void writeNotes(String note) {
     moveServosAtNotes(note, angle1);
     delay(servoDelay);
@@ -84,7 +85,7 @@ void writeNotes(String note) {
 }
 
 // actuates servos at a note to a given angle
-// @param notes is a vector of notes that need to be played
+// @param note is a String containing the note to play
 // @param angle is an int that represents a target angle for servos
 void moveServosAtNotes(String note, int angle) {
     uint8_t curState = digitalRead(ledDict[note]);
